@@ -1,0 +1,36 @@
+syntax="proto3";
+
+option go_package="./pb";
+
+service Gostify {
+  rpc GetUsers(UserRequest) returns (Users){}
+  rpc GetPlaylists(UserRequest) returns (Playlists){}
+  rpc GetSongs(UserRequest) returns (Users){}
+}
+
+message UserRequest {
+  string username = 1;
+}
+
+message Song {
+  string title = 1;
+  string artist = 2;
+}
+
+message Playlist {
+  string title = 1;
+  repeated Song songs = 2;
+}
+
+message User {
+  string username = 1;
+  repeated Playlist playlists = 2;
+}
+
+message Playlists {
+  repeated Playlist playlists = 1;
+}
+
+message Users {
+  repeated User users = 1;
+}
